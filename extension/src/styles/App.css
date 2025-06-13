@@ -1,0 +1,72 @@
+/* App Container */
+.app-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  overflow: hidden;
+}
+
+/* Debug Info (Development Only) */
+.debug-info {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  font-family: monospace;
+  font-size: 12px;
+  max-width: 300px;
+  z-index: 9999;
+}
+
+.debug-info details {
+  cursor: pointer;
+}
+
+.debug-info summary {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.debug-info pre {
+  white-space: pre-wrap;
+  word-break: break-all;
+  margin: 4px 0;
+  font-size: 10px;
+  max-height: 100px;
+  overflow-y: auto;
+}
+
+/* Global Resets for Extension */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 
+               'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ensure the extension doesn't interfere with page styles */
+#ai-chat-extension-root {
+  all: initial;
+  position: fixed !important;
+  top: 0 !important;
+  right: 0 !important;
+  width: 380px !important;
+  height: 100vh !important;
+  z-index: 999999 !important;
+  pointer-events: none !important;
+}
+
+#ai-chat-extension-root * {
+  pointer-events: auto !important;
+}

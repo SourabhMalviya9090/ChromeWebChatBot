@@ -1,0 +1,73 @@
+{
+  "manifest_version": 3,
+  "name": "AI Page Chat",
+  "version": "1.0.0",
+  "description": "Chat with any webpage or PDF using AI. Ask questions, get summaries, and have conversations about the content you're reading.",
+  
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting",
+    "tabs"
+  ],
+  
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*",
+    "file://*/*"
+  ],
+  
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "AI Page Chat",
+    "default_icon": {
+      "16": "icon.png",
+      "32": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png",
+      "600": "icon.png"
+
+    }
+  },
+  
+  "icons": {
+    "16": "icon.png",
+    "32": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  
+  "web_accessible_resources": [
+    {
+        "resources": ["index.html", "assets/*"],
+        "matches": ["<all_urls>"]
+    }
+],
+  
+  "content_security_policy": {
+  "extension_pages": "script-src 'self'; object-src 'self'; connect-src 'self' http://127.0.0.1:* http://localhost:* https://api.openai.com https://api.anthropic.com;"
+},
+  
+  "commands": {
+    "toggle-sidebar": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Y",
+        "mac": "Command+Shift+Y"
+      },
+      "description": "Toggle AI chat sidebar"
+    }
+  }
+}
